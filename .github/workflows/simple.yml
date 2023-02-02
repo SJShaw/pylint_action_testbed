@@ -25,7 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     # make the report
-    - uses: SJShaw/pylint-compare@main
+    - uses: SJShaw/pylint-compare@test
       with:
         targets: dummy *.py
         install_pylint: false
