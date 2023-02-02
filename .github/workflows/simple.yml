@@ -12,7 +12,8 @@ jobs:
         python-version: '3.x'
     # checkout the PR
     - uses: actions/checkout@v3
-
+      with:
+        ref: "refs/pull/${{ github.event.number }}/merge"
     # cache the pip step for speed
     - uses: actions/cache@v3
       with:
