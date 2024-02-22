@@ -1,6 +1,6 @@
 name: "Check for unwanted files"
 
-on: [pull_request]
+on: [pull_request, push]
 
 jobs:
   file_existence:
@@ -24,11 +24,13 @@ jobs:
           set +e
           cp original/.gitignore changes/.gitignore
           cd changes
-          ignored_files=$(git ls-files -ci --exclude-standard | grep -ve ^docker/ -ve /test/)
+          ignored_files=$(git ls-files -ci --exclude-standard)
+
+          for filename in ignored_files; do
+            echo "::error file={$filename}::Should not be committed"
+          done
 
           if [ ! -z "$ignored_files" ]; then
-            echo "::error:: Deliberately ignored files were included:"
-            echo $ignored_files
             exit 1
           fi
         shell: bash
