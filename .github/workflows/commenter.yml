@@ -27,9 +27,9 @@ jobs:
 
       - id: message_reader
         run: |
-            echo 'message<<EOF' >> $GITHUB_OUTPUT
-            cat ${{ runner.temp }}/lint_report/message >> $GITHUB_OUTPUT
-            cat 'EOF' >> $GITHUB_OUTPUT
+          echo 'message<<EOF' >> $GITHUB_OUTPUT
+          cat '${{ runner.temp }}/lint_report/message' >> $GITHUB_OUTPUT
+          cat 'EOF' >> $GITHUB_OUTPUT
 
       - name: Comment
         uses: SJShaw/pylint-compare/update-pr@test
