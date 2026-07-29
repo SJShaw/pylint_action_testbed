@@ -22,8 +22,8 @@ jobs:
         with:
           name: lint_report
           path: ${{ runner.temp }}/lint_report
-#          run-id: ${{ github.event.workflow_run.id }}
-#          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - id: message_reader
         run: |
