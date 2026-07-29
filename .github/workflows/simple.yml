@@ -28,7 +28,7 @@ jobs:
         pip install -r requirements.txt
     # build the comparison report
     - id: comparison
-      uses: SJShaw/pylint-compare@test
+      uses: SJShaw/pylint-compare/build-report@test
       with:
         targets: dummy *.py
         install_pylint: false
@@ -39,7 +39,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Comment
-        uses: marocchino/sticky-pull-request-comment@v3
+        uses: SJShaw/pylint-compare/update-pr@test
         with:
-          message: |
+          comment: |
             ${{ needs.lint.outputs.report }}
