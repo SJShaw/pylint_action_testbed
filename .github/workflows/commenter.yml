@@ -30,9 +30,13 @@ jobs:
           echo 'message<<EOF' >> $GITHUB_OUTPUT
           cat '${{ runner.temp }}/lint_report/message' >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
-
+          echo 'pr<<EOF' >> $GITHUB_OUTPUT
+          cat '${{ runner.temp }}/lint_report/pr' >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
+        shell: bash
       - name: Comment
         uses: SJShaw/pylint-compare/update-pr@test
         with:
           comment: |
             ${{ steps.message_reader.outputs.message }}
+          pr_number: ${{ steps.message_reader.outputs.pr }}

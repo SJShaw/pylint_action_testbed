@@ -39,6 +39,7 @@ jobs:
       run: |
         mkdir -p ./lint_report
         echo "${{ steps.comparison.outputs.report }}" >> ./lint_report/message
+        echo "${{ github.event.number }}" >> ./lint_report/pr
     - uses: actions/upload-artifact@v7
       with:
         name: lint_report
