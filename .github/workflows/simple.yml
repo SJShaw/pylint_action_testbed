@@ -41,5 +41,5 @@ jobs:
         echo ${{ steps.comparison.output.report }} >> ./lint_report/message
     - uses: actions/upload-artifact@v7
       with:
-        name: message
+        name: lint_report
         path: lint_report/
